@@ -5,12 +5,14 @@ body {
 }
 
 .container {
+  position: relative; 
   width: 400px;
-  height: 766px;
+  height: 100vh;
   border: 2px solid #21252c;
   margin: auto;
   padding: 0%;
 }
+
 
 .button {
   width: 350px;
@@ -73,7 +75,21 @@ nav a {
   padding: 10px 20px;
 }
 
-nav.fixed-bottom,
+nav.fixed-bottom { 
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 1000;
+  bottom: 0;
+  background-color: #21252C;
+}
+
 nav.fixed-top {
   position: fixed;
   left: 0;
