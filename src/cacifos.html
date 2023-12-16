@@ -42,78 +42,8 @@
       </div>
     </div>
   </html>
-  <script>
-    let map;
-  
-    function initMap() {
-      const position = { lat: 40.633169, lng: -8.659486 };
-      const position2 = { lat: 40.657661, lng: -7.914519 };
-      const position3 = { lat: 41.178509, lng: -8.595379 };
-      const position4 = { lat: 38.737298, lng: -9.138022};
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: position,
-      });
-      const infowindow = new google.maps.InfoWindow({
-          content: "Cacifo no Departamento de Eletrónica, Telecomunicações e Informática da Universidade de Aveiro",
-          ariaLabel: "Cacifo1",
-        });
-      const infowindow2 = new google.maps.InfoWindow({
-          content: "Cacifo na Câmara Municipal de Viseu",
-          ariaLabel: "Cacifo2",
-        });
-      const infowindow3 = new google.maps.InfoWindow({
-          content: "Cacifo no Departamento de Informática na Faculdade de Engenharia da Universidade do Porto",
-          ariaLabel: "Cacifo3",
-        });
-      const infowindow4 = new google.maps.InfoWindow({
-          content: "Cacifo no Departamento de Informática II no Instituto Superior Técnico da Universidade de Lisboa",
-          ariaLabel: "Cacifo4",
-        });
-  
-      const marker1 = new google.maps.Marker({
-        position: position,
-        map: map,
-        title: "Cacifo1"
-      });
-  
-      const marker2 = new google.maps.Marker({
-        position: position2,
-        map: map,
-        title: "Cacifo2"
-      });
-  
-      const marker3 = new google.maps.Marker({
-        position: position3,
-        map: map,
-        title: "Cacifo3"
-      });
-  
-      const marker4 = new google.maps.Marker({
-        position: position4,
-        map: map,
-        title: "Cacifo4"
-      });
-  
-      marker1.addListener("click", () => {
-        infowindow.open(map, marker1);
-      });
-  
-      marker2.addListener("click", () => {
-        infowindow2.open(map, marker2);
-      });
-  
-      marker3.addListener("click", () => {
-        infowindow3.open(map, marker3);
-      });
-  
-      marker4.addListener("click", () => {
-        infowindow4.open(map, marker4);
-      });
-    }
-  
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD77sWjhlGKqZLFxAw5cYIhbKfok0Eiy8E&callback=initMap" async></script>
+  <script src="scripts/global.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD77sWjhlGKqZLFxAw5cYIhbKfok0Eiy8E&callback=initMap" async></script>
   
 </body>
 </html>
