@@ -11,7 +11,6 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css' integrity='sha512-tx5+1LWHez1QiaXlAyDwzdBTfDjX07GMapQoFTS74wkcPMsI3So0KYmFe6EHZjI8+eSG0ljBlAQc3PQ5BTaZtQ==' crossorigin='anonymous'/>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css' integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==' crossorigin='anonymous'/>
   <link rel="stylesheet" href="./styles/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
 </head>
 <body>
@@ -37,16 +36,20 @@
         <strong>Altura:</strong> <span id="displayAltura"></span><br>
         <strong>Peso:</strong> <span id="displayPeso"></span><br>
         <strong>De:</strong> <span id="displayEnviarDe"></span><br>
-        <strong>Para:</strong> <span id="displayPara"></span> 
-        <div id="qrcode" style="position: absolute; bottom: 10px; right: 10px;"></div>
+        <strong>Para:</strong> <span id="displayPara"></span> <br>
+        <img src="./img/qrcode.png" style="height: 100px; width: 100px; margin-left: 210px; border: 1px solid #33333371;">
+        <h9 style="margin-left: 210px; font-size: 10px;">Clique para expandir</h9>
       </div>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <img src="./img/qrcode.png" style="height: 300px; width: 300px; margin: auto;">
+        </div>
       </div>
       <div>
         <p></p>
         <hr class="custom" style="width: 175px">
         <p></p>
       </div>
-      
     </div>
     
     <!-- Bottom navbar -->
@@ -58,7 +61,8 @@
       </nav>
     </div>
   </div>
-  <script src="./scripts/global.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js' integrity='sha512-N5FeR5MUp6RqoUS/nDs9s0FpS+oR/2poPMyDQMz9erFXh9q4GXi0Ibr3fXnbLTJ5/u4qwvdP8yD/9jWdeUAnuQ==' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js' integrity='sha512-B4gt1jrGC7Jh4hBhBLZqS1gA6c8r0gVxQ2G3shoz1Rb/DcGR5e3t4Peho2zT0MkEwIpr1S2N5LMKoFJrkD5ckw==' crossorigin='anonymous'></script>
   <script>
     // Retrieve the stored JSON data from localStorage
     var storedFormData = localStorage.getItem('formData');
@@ -104,21 +108,21 @@
 
       return orderID;
     }
+    var modal = document.getElementById('myModal');
+
+    document.getElementById('displayInfo').addEventListener('click', function() {
+      modal.style.display = "block";
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Attach the click event to the field
+    document.getElementById('displayInfo').addEventListener('click', showImagePopup);
     </script>
   <script src="./scripts/global.js"></script>
-  <!-- Add this script tag before </body> -->
-<script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-<script>    // qrcode.js
-  document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve the order ID from the displayOrderID span
-    var orderID = document.getElementById('displayOrderID').textContent;
-  
-    // Generate QR code using qrious library
-    var qr = new QRious({
-      element: document.getElementById('qrcode'),
-      value: orderID,
-      size: 100, // Adjust the size as needed
-    });
-  });</script>
 </body>
 </html>
