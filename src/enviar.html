@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="height:1000px">
       <!-- Top navbar -->
       <div class="fixed-top-container">
         <nav class="fixed-top justify-content-between">
@@ -25,19 +25,25 @@
       <p></p>
       <div class="content">
         <p class="center" style="font-size: 20px;"><b>Envio de uma encomenda</b></p>
-        <div class="field" style="height: 700px; margin: 20px;">
-          <div class="row">
+        <div class="field" style="height: 800px; margin: 20px;">
+         <form id="myForm">
+         <div class="row">
             <p></p>
             <p class="center">Tamanho da Encomenda (cm)</p>
+          
             <div class="row col-4"> 
-              <input type="text" id="comp" class="normal" style="margin-left: 30px; width: 90px; height: 50px; font-size:10px;text-align: center" placeholder="Comprimento"> 
-            </div>
-            <div class="row col-4">
-              <input type="text" id="larg" class="normal" style="margin-left: 40px; width: 90px; height: 50px; font-size:10px;text-align: center;" placeholder="Largura">
-            </div>
-            <div class="row col-6">
-              <input type="text" id="alt" class="normal" style="margin-left: 50px; width: 90px; height: 50px; font-size:10px;text-align: center;" placeholder="Altura">
-            </div>
+              <input type="text" id="comp" class="normal" style="margin-left: 30px; width: 90px; height: 50px; font-size:10px;text-align: center" placeholder="Comprimento" required>
+              <span id="compError" class="error-message"></span>
+          </div>
+          <div class="row col-4">
+              <input type="text" id="larg" class="normal" style="margin-left: 40px; width: 90px; height: 50px; font-size:10px;text-align: center;" placeholder="Largura" required>
+              <span id="largError" class="error-message"></span>
+          </div>
+          <div class="row col-6">
+              <input type="text" id="alt" class="normal" style="margin-left: 50px; width: 90px; height: 50px; font-size:10px;text-align: center;" placeholder="Altura" required>
+              <span id="altError" class="error-message"></span>
+          </div>
+          
           </div>
           <div class="row">
             <p></p>
@@ -46,31 +52,78 @@
               <input type="text" id="peso" class="normal" style=" width: 90px; height: 50px; font-size:10px;text-align: center;" placeholder="Peso">
           </div>
           <div class="row center">
+            <div class="row center">
+              <p></p>
+              <label for="enviarDe">Enviar de:</label>
+              <select id="enviarDe" class="dropdown normal center" style="width: 150px;" required>
+                  <option value="Cacifo1">Cacifo DETI</option>
+                  <option value="Cacifo2">Cacifo CMViseu</option>
+                  <option value="Cacifo3">Cacifo FEUP</option>
+                  <option value="Cacifo4">Cacifo TÉCNICO</option>
+              </select>
+              <span id="enviarDeError" class="error-message"></span>
+              <p></p>
+              <label for="para">Para:</label>
+              <select id="para" class="dropdown normal center" style="width: 150px;">
+                  <option value="Cacifo1">Cacifo DETI</option>
+                  <option value="Cacifo2">Cacifo CMViseu</option>
+                  <option value="Cacifo3">Cacifo FEUP</option>
+                  <option value="Cacifo4">Cacifo TÉCNICO</option>
+              </select>
+              <span id="paraError" class="error-message"></span>
+                <p class="center" style="font-size: 20px;"><b>Distribuidora</b></p>
+                <div class="center">
+                  <select id="deliveryCompany" name="deliveryCompany">
+                    <option value="dpd">DPD Portugal</option>
+                    <option value="gls">GLS</option>
+                    <option value="ups">UPS</option>
+                  </select>
+                </div>
+                <div class="row center">
+                  <p class="center">Método de Pagamento</p>
+                  <div class="row center" style="display: flex; justify-content: space-between;">
+                    <div class="col-4">
+                      <input type="radio" id="mbway" name="pagamento" value="mbway">
+                      <label for="mbway">MBWay</label>
+                    </div>
+                    <div class="col-4">
+                      <input type="radio" id="cartao" name="pagamento" value="cartao">
+                      <label for="cartao">⠀Cartão</label>
+                    </div>
+                    <div class="col-4">
+                      <input type="radio" id="paypal" name="pagamento" value="paypal">
+                      <label for="paypal">⠀PayPal</label>
+                    </div>
+                  </div>
+                  <div id="paymentDetails" class="center">
+                    <input type="text" id="mbwayField" placeholder="Nº de telemóvel" style="display: none;">
+                    <input type="text" id="cartaoField" placeholder="Nº do cartão" style="display: none;">
+                    <input type="text" id="paypalField" placeholder="E-mail" style="display: none;">
+                  </div>
+                </div>
+                
+                
             <p></p>
-            <p class="center">Destino</p>
-            <div class="row">
-              <div class="center">
-                <input type="checkbox" id="cacifos" name="destino" value="cacifos">
-                <label for="cacifos">Ver no mapa</label>
-              </div>
+            <div class="field" style="padding: 20px; background-color: white;">
+              <label for="estimativa">Preço: </label>
+              <input type="text" class="bg-transparent border-0" id="priceId" readonly>
+          
+              <label for="estimativa">Estimativa: </label>
+              <input type="text" class="bg-transparent border-0" id="estimativa" readonly>
             </div>
-            
+              <p></p>
+              <div class="row center">
+                <button id="submitBtn" type="submit" class="register text-white text-decoration-none align-content-center">Seguinte</button>
+                
+          </form>
+          </div>
           </div>
           <div class="row">
             
           </div>
         </div>
-            <!-- Add a container for the map -->
-              <div id="map-container" style="display: none; height: 300px; margin: 20px;">
-                <div id="map"></div>
-              </div>
-              <!-- Add a text box for the address -->
-              <div id="address-container" style="display: none; margin: 20px; ">
-                <input type="text" id="address" class="normal" style="width: 100%; height: 50px; font-size: 14px; text-align: center;" placeholder="Endereço">
-              </div>
             </div>
           </div>
-        
       </div>
       <!-- Bottom navbar -->
       <div class="fixed-bottom-container">
@@ -81,9 +134,86 @@
         </nav>
       </div>
     </div>
+  <script src="./scripts/global.js"></script>
+  <script>
+  document.getElementById('mbway').addEventListener('change', function() {
+  document.getElementById('mbwayField').style.display = this.checked ? 'block' : 'none';
+  document.getElementById('cartaoField').style.display = 'none';
+  document.getElementById('paypalField').style.display = 'none';
+});
+
+document.getElementById('cartao').addEventListener('change', function() {
+  document.getElementById('mbwayField').style.display = 'none';
+  document.getElementById('cartaoField').style.display = this.checked ? 'block' : 'none';
+  document.getElementById('paypalField').style.display = 'none';
+});
+
+document.getElementById('paypal').addEventListener('change', function() {
+  document.getElementById('mbwayField').style.display = 'none';
+  document.getElementById('cartaoField').style.display = 'none';
+  document.getElementById('paypalField').style.display = this.checked ? 'block' : 'none';
+});
+
+document.getElementById('deliveryCompany').addEventListener('change', function() {
+  var price;
+  var estimate;
+
+  switch (this.value) {
+    case 'dpd':
+      price = '3€';
+      estimate = '3 dias úteis';
+      break;
+    case 'ups':
+      price = '5€';
+      estimate = '1 dia útil';
+      break;
+    case 'gls':
+      price = '4€';
+      estimate = '2 dias úteis';
+      break;
+    default:
+      price = '';
+      estimate = '';
+  }
+
+  document.getElementById('priceId').value = price;
+  document.getElementById('estimativa').value = estimate;
+});
+
+document.getElementById('submitBtn').addEventListener('click', function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  var paymentMethod = document.querySelector('input[name="pagamento"]:checked').value;
+  var deliveryCompany = document.getElementById('deliveryCompany').value;
+  var price = document.getElementById('priceId').value;
+  var estimate = document.getElementById('estimativa').value;
+  var comprimento = document.getElementById('comp').value; // Fix the ID here
+  var largura = document.getElementById('larg').value;    // Fix the ID here
+  var altura = document.getElementById('alt').value;      // Fix the ID here
+  var peso = document.getElementById('peso').value;
+  var enviarde = document.getElementById('enviarDe').value; // Fix the ID here
+  var para = document.getElementById('para').value;
+
+  // Store data in localStorage
+  localStorage.setItem('paymentMethod', paymentMethod);
+  localStorage.setItem('deliveryCompany', deliveryCompany);
+  localStorage.setItem('price', price);
+  localStorage.setItem('estimate', estimate);
+  localStorage.setItem('comprimento', comprimento);
+  localStorage.setItem('largura', largura);
+  localStorage.setItem('altura', altura);
+  localStorage.setItem('peso', peso);
+  localStorage.setItem('enviarde', enviarde);
+  localStorage.setItem('para', para);
+  // Navigate to tracking.html
+  window.location.href = './tracking.html';
+});
+
 
   
-  <script src="./scripts/global.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD77sWjhlGKqZLFxAw5cYIhbKfok0Eiy8E&callback=initMap" async></script>
+
+  
+</script>
 </body>
 </html>
