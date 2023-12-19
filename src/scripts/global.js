@@ -89,3 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
   });
 });
+
+function selectMarker(marker) {
+  // Deselect the previously selected marker (if any)
+  if (selectedMarker) {
+    selectedMarker.setIcon(null); // Reset the icon to the default
+  }
+}
