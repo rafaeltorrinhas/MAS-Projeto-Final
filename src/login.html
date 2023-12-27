@@ -16,22 +16,52 @@
 <body>
   <div class="container">
     <div class="center">
-      <img src="./img/Logo1.png" >
+      <img src="./img/Logo1.png">
     </div>
     <div class="center">
       <p></p>
       <label><b>E-mail</b></label>
-      <p><input  class="normal" type="text" placeholder="exemplo@ua.pt" name= required>
+      <p><input class="normal" type="email" id="emailInput" placeholder="exemplo@ua.pt" name="email" required>
       <p></p>
       <label><b>Password</b></label>
-      <input  class="normal password" type="password" placeholder="Password" name="psw" required>
-    <p></p>
-    <a href="./index.html">
-      <button class="login align-content-center text-black">Entrar</button>
-    </a>
-    <p></p>
-    <a href="./register.html">
-      <button class="register align-content-center text-white">Registar</button>
-    </a>
+      <input class="normal password" type="password" id="passwordInput" placeholder="Password" name="psw" required>
+      <p></p>
+      <button class="login align-content-center text-black" onclick="saveCredentialsAndRedirect()">Entrar</button>
+      <p></p>
+      <a href="./register.html">
+        <button class="register align-content-center text-white">Registar</button>
+      </a>
+    </div>
+
+    <script>
+      function saveCredentialsAndRedirect() {
+        var email = document.getElementById('emailInput').value;
+
+        // Simple email validation
+        if (!isValidEmail(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        localStorage.setItem('savedEmail', email);
+        window.location.href = "./index.html";
+      }
+
+      function isValidEmail(email) {
+        // Basic email validation using a regular expression
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      window.onload = function () {
+        var savedEmail = localStorage.getItem('savedEmail');
+
+        if (savedEmail) {
+          document.getElementById('emailInput').value = savedEmail;
+        }
+      };
+    </script>
   </div>
 </body>
+
+</html>

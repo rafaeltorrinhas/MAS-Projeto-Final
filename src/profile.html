@@ -33,7 +33,7 @@
         <h5><b>Utilizador</b></h5>
       </div>
       <div class="center">
-        <h6><b>Email:</b> r*****@ua.pt</h6>
+        <h6><b>Email: </b><span id="savedEmail"></span></h6>
         <h6><b>Telefone:</b> 961******</h6>
       <div style="margin:20px">
       <b>Encomendas recebidas:</b> 10 <br> 
@@ -50,7 +50,13 @@
         </nav>
       </div>
     </div>
-
-  </html>
+    <script>
+      window.onload = function () {
+        var savedEmail = localStorage.getItem('savedEmail');
+        if (savedEmail) {
+          document.getElementById('savedEmail').innerHTML = savedEmail;
+        }
+      };
+    </script>
 </body>
 </html>
